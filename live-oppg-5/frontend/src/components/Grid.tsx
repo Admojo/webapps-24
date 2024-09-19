@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Student from "./Student";
 import type {Student as StudentProp} from "./types";
+import AddStudentForm from "./AddStudentForm";
 
 
 type GridProps = {
@@ -14,14 +15,21 @@ export default function Grid(props: GridProps){
     // TODO: Legg til state her og bruk prop-listen som deafult state
     const [students, setStudents] = useState (props.students ?? []);
 
+    const onAddStudent = (student: {name: string}) => {
+
+    }
+
     return(
         <>
-          {/* <Student name={name} id={id}> </Student> */}
-        <article className="grid">
-            {students.map((student) => (
-                <Student key={student.id} name={student.name} id={student.id} />
-             ))}
-        </article>
+       
+        <section>
+            <article className="grid">
+                {students.map((student) => (
+                    <Student key={student.id} name={student.name} id={student.id} />
+                ))}
+            </article>
+            <AddStudentForm onAddStudent= {onAddStudent}/>
+        </section>
          
         </>
     )
