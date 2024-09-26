@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Grid from "./components/Grid";
-import Student from "./components/Student";
+import Total from "./components/Total";
+import type { Student } from "./components/types"
 
-const students = [
+const initialStudent = [
   {id: "1", name: "Line" },
   {id: "2", name: "Alise" },
   {id: "3", name: "Siv" },
@@ -9,7 +11,11 @@ const students = [
 ];
 
 function App() {
+  const [students, setStudents ] = useState <Student[]>(initialStudent ?? [])
 
+  const onAddStudent = (student: {name: string}) => {
+    setStudents((prev) => [...prev, { id: crypto.randomUUID(), ...student }]);
+}
   
   return (
     <>
@@ -17,7 +23,8 @@ function App() {
         {/* <h1>Start</h1> */}
         {/* <Student name="mari" id="123"/> */}
         {/* <Student name={name} id={id}></Student> */}
-        <Grid students={students}/>
+        <Grid students={students} onAddStudent={onAddStudent}/>
+        <Total total= {students.length} />
       </main>
     </>
   )

@@ -6,18 +6,22 @@ import AddStudentForm from "./AddStudentForm";
 
 type GridProps = {
     students: StudentProp[];
+    onAddStudent: ({name}: {name:string}) => void;
+
 }
 
 export default function Grid(props: GridProps){
+    const {students, onAddStudent} = props;
 
-    // const {students} = props; 
+    // props.students ?? []
+    //const {students} = props; 
 
     // TODO: Legg til state her og bruk prop-listen som deafult state
-    const [students, setStudents] = useState (props.students ?? []);
+    // const [students, setStudents] = useState (props.students ?? []);
 
-    const onAddStudent = (student: {name: string}) => {
-        setStudents((prev) => [...prev, { id: crypto.randomUUID(), ...student }]);
-    }
+    // const onAddStudent = (student: {name: string}) => {
+    //     setStudents((prev) => [...prev, { id: crypto.randomUUID(), ...student }]);
+    // }
 
     return(
         <>
