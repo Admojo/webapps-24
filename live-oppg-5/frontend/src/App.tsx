@@ -16,6 +16,10 @@ function App() {
   const onAddStudent = (student: {name: string}) => {
     setStudents((prev) => [...prev, { id: crypto.randomUUID(), ...student }]);
 }
+
+const onRemoveStudent = (id: string) => {
+  setStudents((prev) => prev.filter((student) => student.id !== id));
+};
   
   return (
     <>
@@ -23,7 +27,7 @@ function App() {
         {/* <h1>Start</h1> */}
         {/* <Student name="mari" id="123"/> */}
         {/* <Student name={name} id={id}></Student> */}
-        <Grid students={students} onAddStudent={onAddStudent}/>
+        <Grid students={students} onAddStudent={onAddStudent} onRemoveStudent={onRemoveStudent}/>
         <Total total= {students.length} />
       </main>
     </>
