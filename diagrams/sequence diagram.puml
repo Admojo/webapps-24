@@ -1,0 +1,9 @@
+@startuml 
+
+
+Klient ->>Server: HTTP request
+Server -> Database: Henter / lagerer data
+Database -> Server: Returnerer data 
+Klient <- Server: HTTP Respons
+
+@enduml
